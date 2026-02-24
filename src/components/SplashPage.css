@@ -1,0 +1,304 @@
+/* =========================================================
+   SplashPage — root layout
+   ========================================================= */
+
+/* ---------- Reduced-motion toggle ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- Root container ---------- */
+.splash-root {
+  position: relative;
+  width: 100vw;
+  min-height: 100svh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* Sky gradient — z-index 0 implied by stacking context */
+  background: linear-gradient(to bottom, #003da5 0%, #0099e6 100%);
+}
+
+
+/* ---------- Mountains (z-index: 1) ---------- */
+.mountain {
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.mountain--left {
+  left: 0;
+  width: 50vw;
+  height: auto;
+}
+
+.mountain--right {
+  right: 0;
+  width: 50vw;
+  height: auto;
+}
+
+/* ---------- Cup with steam (z-index: 2) ---------- */
+.cup-with-steam {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(calc(-50% + 10%));
+  z-index: 2;
+  width: 65vw;
+  max-width: 650px;
+  height: auto;
+  pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+  .cup-with-steam {
+    width: 50vw;
+    max-width: 700px;
+  }
+}
+
+/* ---------- Content layer (z-index: 10) ---------- */
+.content-layer {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px 50vh;
+}
+
+@media (min-width: 1024px) {
+  .content-layer {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 0 45vh;
+  }
+}
+
+/* ---------- Botefam Presents image ---------- */
+.botefam-presents {
+  display: block;
+  width: 280px;
+  height: auto;
+  margin-top: 36px;
+
+  /* entrance animation */
+  animation: fadeSlideIn 600ms ease-out 0ms both;
+}
+
+@media (min-width: 1024px) {
+  .botefam-presents {
+    width: 380px;
+    margin-top: 0;
+    padding-top: 6vh;
+  }
+}
+
+/* ---------- Hero wordmark ---------- */
+.hero-wordmark {
+  display: block;
+  width: 100%;
+  max-width: 335px;
+  margin-top: 6px;
+
+  animation: fadeSlideIn 600ms ease-out 100ms both;
+}
+
+@media (min-width: 1024px) {
+  .hero-wordmark {
+    width: 580px;
+    max-width: none;
+    margin-top: 8px;
+  }
+}
+
+/* ---------- CTA Button ---------- */
+.cta-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111111;
+  color: #ffffff;
+  font-family: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 100px;
+  padding: 18px 48px;
+  min-width: 200px;
+  min-height: 44px; /* a11y touch target */
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  transition: filter 120ms ease-out, transform 120ms ease-out;
+  margin-top: 24px;
+  width: 80%;
+  max-width: 300px;
+  height: 64px;
+
+  animation: fadeSlideIn 600ms ease-out 300ms both;
+}
+
+@media (min-width: 1024px) {
+  .cta-button {
+    width: auto;
+    height: auto;
+    font-size: 16px;
+    margin-top: 28px;
+  }
+}
+
+.cta-button:hover {
+  filter: brightness(1.08);
+  transform: scale(1.03);
+}
+
+.cta-button:active {
+  transform: scale(0.97);
+  filter: brightness(1);
+}
+
+/* ---------- Lineup graphic ---------- */
+.lineup-graphic {
+  display: block;
+  width: 88%;
+  max-width: 500px;
+  height: auto;
+  margin-top: 28px;
+
+  animation: fadeSlideIn 600ms ease-out 450ms both;
+}
+
+@media (min-width: 1024px) {
+  .lineup-graphic {
+    width: 500px;
+    max-width: none;
+    margin-top: 28px;
+  }
+}
+
+/* ---------- Entrance animation keyframes ---------- */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   TicketModal
+   ========================================================= */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* open animation */
+  animation: backdropIn 200ms ease-out both;
+}
+
+.modal-backdrop--closing {
+  animation: backdropOut 150ms ease-in both;
+}
+
+@keyframes backdropIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes backdropOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+.modal-container {
+  position: relative;
+  background: #f2f4f6;
+  border-radius: 16px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+  z-index: 1001;
+
+  /* Desktop sizing */
+  width: min(640px, 90vw);
+  height: min(720px, 90vh);
+
+  animation: modalIn 200ms ease-out both;
+}
+
+.modal-container--closing {
+  animation: modalOut 150ms ease-in both;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1.0); }
+}
+
+@keyframes modalOut {
+  from { opacity: 1; transform: scale(1.0); }
+  to   { opacity: 0; transform: scale(0.95); }
+}
+
+/* Mobile: full-screen takeover */
+@media (max-width: 767px) {
+  .modal-container {
+    width: 100vw;
+    height: 100svh;
+    border-radius: 0;
+  }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 1002;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 120ms ease-out;
+}
+
+.modal-close-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-close-btn:active {
+  background: rgba(0, 0, 0, 1);
+}
+
+.modal-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}

@@ -60,8 +60,9 @@
 
 @media (min-width: 1024px) {
   .cup-with-steam {
-    width: 50vw;
-    max-width: 700px;
+    width: auto;
+    max-width: min(50vw, 700px);
+    max-height: 60vh;
   }
 }
 
@@ -107,6 +108,7 @@
   display: block;
   width: 100%;
   max-width: 335px;
+  height: auto;
   margin-top: 6px;
 
   animation: fadeSlideIn 600ms ease-out 100ms both;

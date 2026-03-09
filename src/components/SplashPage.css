@@ -48,7 +48,7 @@
 /* ---------- Cup with steam (z-index: 2) ---------- */
 .cup-with-steam {
   position: absolute;
-  bottom: 0;
+  bottom: -2%;
   left: 50%;
   transform: translateX(calc(-50% + 10%));
   z-index: 2;
@@ -186,6 +186,46 @@
     max-width: none;
     margin-top: 28px;
   }
+}
+
+/* ---------- Social links ---------- */
+.social-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24px;
+  animation: fadeSlideIn 600ms ease-out 550ms both;
+}
+
+.social-links__heading {
+  color: #ffffff;
+  font-family: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+  opacity: 0.85;
+}
+
+.social-links__icons {
+  display: flex;
+  gap: 20px;
+}
+
+.social-links__link {
+  color: #ffffff;
+  opacity: 0.8;
+  transition: opacity 150ms ease-out, transform 150ms ease-out;
+}
+
+.social-links__link:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.social-links__link:active {
+  transform: scale(0.95);
 }
 
 /* ---------- Entrance animation keyframes ---------- */

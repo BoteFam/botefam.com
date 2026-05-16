@@ -4,10 +4,10 @@ import TicketModal from './TicketModal';
 
 import botefamPresentsImg from '../assets/botefam_presents.png';
 import wordmarkImg from '../assets/beats_and_blends_word_logo.png';
-import lineupImg from '../assets/lineup.png';
 import mountainLeftImg from '../assets/mountain_left.png';
 import mountainRightImg from '../assets/mountain_right.png';
-import cupWithSteamImg from '../assets/cup_with_steam.png';
+import cupCutImg from '../assets/cup_cut.png';
+import bgImg from '../assets/BG.png';
 
 /* =========================================================
    Sub-components
@@ -39,15 +39,28 @@ function MountainRight() {
   );
 }
 
-function CupWithSteam() {
+function CupCut() {
   return (
     <img
-      className="cup-with-steam"
-      src={cupWithSteamImg}
-      alt="A cup of coffee with steam rising — Beats &amp; Blends"
+      className="cup-cut"
+      src={cupCutImg}
+      alt="A coffee cup with the Denver skyline — Ace Eat·Serve, July 18 2026"
       width="696"
-      height="1019"
+      height="522"
       loading="eager"
+    />
+  );
+}
+
+function BackgroundImage() {
+  return (
+    <img
+      className="bg-image"
+      src={bgImg}
+      alt=""
+      aria-hidden="true"
+      loading="eager"
+      fetchPriority="high"
     />
   );
 }
@@ -144,17 +157,8 @@ function SocialLinks() {
   );
 }
 
-function LineupGraphic() {
-  return (
-    <img
-      className="lineup-graphic"
-      src={lineupImg}
-      alt="Event lineup: 10AM–11AM Stemmily, 11AM–12PM JBLU, 12PM–1PM Macefacekilla, 1PM–2PM Hyphy Wifey"
-      width="711"
-      height="172"
-      loading="eager"
-    />
-  );
+function LineupTBA() {
+  return <p className="lineup-tba">LINEUP TBA</p>;
 }
 
 /* =========================================================
@@ -168,19 +172,22 @@ export default function SplashPage() {
 
   return (
     <div className="splash-root">
+      {/* Sunset background image — z-index 0 */}
+      <BackgroundImage />
+
       {/* Background mountains — z-index 1 */}
       <MountainLeft />
       <MountainRight />
 
-      {/* Cup with steam — z-index 2 */}
-      <CupWithSteam />
+      {/* Cup cutout — z-index 2 */}
+      <CupCut />
 
       {/* Main content — z-index 10 */}
       <div className="content-layer">
         <BotefamPresents />
         <HeroWordmark />
         <CTAButton onClick={openModal} />
-        <LineupGraphic />
+        <LineupTBA />
         <SocialLinks />
       </div>
 

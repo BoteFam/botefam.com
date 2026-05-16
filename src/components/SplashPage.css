@@ -20,8 +20,19 @@
   min-height: 100svh;
   overflow-x: hidden;
   overflow-y: auto;
-  /* Sky gradient — z-index 0 implied by stacking context */
-  background: linear-gradient(to bottom, #003da5 0%, #0099e6 100%);
+  background: #1a0030;
+}
+
+/* ---------- Sunset background image (z-index: 0) ---------- */
+.bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 0;
+  pointer-events: none;
 }
 
 
@@ -29,7 +40,7 @@
 .mountain {
   position: absolute;
   bottom: 0;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -45,24 +56,24 @@
   height: auto;
 }
 
-/* ---------- Cup with steam (z-index: 2) ---------- */
-.cup-with-steam {
+/* ---------- Cup cutout (z-index: 3) ---------- */
+.cup-cut {
   position: absolute;
   bottom: -2%;
   left: 50%;
-  transform: translateX(calc(-50% + 10%));
-  z-index: 2;
-  width: 65vw;
-  max-width: 650px;
+  transform: translateX(calc(-50% + 71px));
+  z-index: 3;
+  width: 80vw;
+  max-width: 680px;
   height: auto;
   pointer-events: none;
 }
 
 @media (min-width: 1024px) {
-  .cup-with-steam {
+  .cup-cut {
     width: auto;
-    max-width: min(50vw, 700px);
-    max-height: 60vh;
+    max-width: min(55vw, 720px);
+    max-height: 65vh;
   }
 }
 
@@ -127,24 +138,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #111111;
-  color: #ffffff;
+  background: rgba(255, 255, 255, 0.92);
+  color: #111111;
   font-family: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
   font-weight: 800;
   font-size: 18px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  border: none;
+  border: 2px solid rgba(0, 0, 0, 0.12);
   border-radius: 100px;
   padding: 18px 48px;
   min-width: 200px;
-  min-height: 44px; /* a11y touch target */
+  min-height: 44px;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.8);
   transition: filter 120ms ease-out, transform 120ms ease-out;
   margin-top: 24px;
   width: 80%;
-  max-width: 300px;
+  max-width: 320px;
   height: 64px;
 
   animation: fadeSlideIn 600ms ease-out 300ms both;
@@ -156,35 +167,37 @@
     height: auto;
     font-size: 16px;
     margin-top: 28px;
+    max-width: 280px;
   }
 }
 
 .cta-button:hover {
-  filter: brightness(1.08);
+  filter: brightness(1.06);
   transform: scale(1.03);
 }
 
 .cta-button:active {
   transform: scale(0.97);
-  filter: brightness(1);
+  filter: brightness(0.96);
 }
 
-/* ---------- Lineup graphic ---------- */
-.lineup-graphic {
-  display: block;
-  width: 88%;
-  max-width: 500px;
-  height: auto;
-  margin-top: 28px;
+/* ---------- Lineup TBA ---------- */
+.lineup-tba {
+  color: #ffffff;
+  font-family: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 28px 0 0;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
 
   animation: fadeSlideIn 600ms ease-out 450ms both;
 }
 
 @media (min-width: 1024px) {
-  .lineup-graphic {
-    width: 500px;
-    max-width: none;
-    margin-top: 28px;
+  .lineup-tba {
+    font-size: 22px;
   }
 }
 

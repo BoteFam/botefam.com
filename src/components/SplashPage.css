@@ -18,8 +18,7 @@
   position: relative;
   width: 100vw;
   min-height: 100svh;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
   background: #1a0030;
 }
 
@@ -59,7 +58,7 @@
 /* ---------- Cup cutout (z-index: 3) ---------- */
 .cup-cut {
   position: absolute;
-  bottom: -2%;
+  bottom: calc(-2% + 10px);
   left: 50%;
   transform: translateX(calc(-50% + 71px));
   z-index: 3;

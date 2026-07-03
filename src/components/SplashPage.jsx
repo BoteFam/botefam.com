@@ -157,8 +157,26 @@ function SocialLinks() {
   );
 }
 
-function LineupTBA() {
-  return <p className="lineup-tba">LINEUP TBA</p>;
+const SET_TIMES = [
+  { time: '10:00 – 11:00 AM', artist: 'RANMA' },
+  { time: '11:00 AM – 12:30 PM', artist: 'PLURTHLINGS' },
+  { time: '12:30 – 2:00 PM', artist: 'NOA SAITOSHII' },
+];
+
+function Lineup() {
+  return (
+    <section className="lineup" aria-label="Set times">
+      <h2 className="lineup__heading">Set Times</h2>
+      <ul className="lineup__list">
+        {SET_TIMES.map(({ time, artist }) => (
+          <li className="lineup__row" key={artist}>
+            <span className="lineup__time">{time}</span>
+            <span className="lineup__artist">{artist}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
 }
 
 /* =========================================================
@@ -187,7 +205,7 @@ export default function SplashPage() {
         <BotefamPresents />
         <HeroWordmark />
         <CTAButton onClick={openModal} />
-        <LineupTBA />
+        <Lineup />
         <SocialLinks />
       </div>
 

@@ -9,7 +9,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
  * - Closing uses a short CSS animation before unmounting.
  * - Keyboard: Escape key closes the modal.
  */
-const TICKET_URL = 'https://app.rfidify.com/event/beats-n-blends-ace-july';
+const TICKET_URL = 'https://app.rfidify.com/event/bb3';
 const CLOSE_ANIMATION_MS = 150;
 
 export default function TicketModal({ onClose }) {
@@ -58,7 +58,7 @@ export default function TicketModal({ onClose }) {
       onClick={handleBackdropClick}
       role="dialog"
       aria-modal="true"
-      aria-label="Buy tickets for Beats &amp; Blends"
+      aria-label="Buy tickets for Beats & Blends"
     >
       <div className={`modal-container${containerClosingClass}`}>
         <button
@@ -74,7 +74,7 @@ export default function TicketModal({ onClose }) {
         <iframe
           className="modal-iframe"
           src={TICKET_URL}
-          title="Beats &amp; Blends ticket purchase"
+          title="Beats & Blends ticket purchase"
           allow="payment"
         />
       </div>

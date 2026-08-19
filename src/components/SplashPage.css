@@ -83,14 +83,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 20px 50vh;
+  padding: 0 20px max(0px, calc(50vh - 190px));
 }
 
 @media (min-width: 1024px) {
   .content-layer {
     max-width: 760px;
     margin: 0 auto;
-    padding: 0 0 45vh;
+    padding: 0 0 max(0px, calc(45vh - 100px));
   }
 }
 
@@ -109,7 +109,7 @@
   .botefam-presents {
     width: 380px;
     margin-top: 0;
-    padding-top: 6vh;
+    padding-top: 1vh;
   }
 }
 
@@ -128,7 +128,7 @@
   .hero-wordmark {
     width: 580px;
     max-width: none;
-    margin-top: 8px;
+    margin-top: 4px;
   }
 }
 
@@ -165,7 +165,7 @@
     width: auto;
     height: auto;
     font-size: 16px;
-    margin-top: 28px;
+    margin-top: 14px;
     max-width: 280px;
   }
 }
@@ -185,11 +185,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 28px;
+  margin-top: 10px;
   width: 100%;
   max-width: 360px;
 
-  animation: fadeSlideIn 600ms ease-out 450ms both;
+  animation: fadeSlideIn 600ms ease-out 550ms both;
 }
 
 .lineup__heading {
@@ -199,7 +199,7 @@
   font-size: 20px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  margin: 0 0 14px;
+  margin: 0 0 4px;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
 }
 
@@ -210,14 +210,14 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .lineup__row {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 0px;
   text-align: center;
 }
 
@@ -257,8 +257,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 24px;
-  animation: fadeSlideIn 600ms ease-out 550ms both;
+  margin-top: 20px;
+  animation: fadeSlideIn 600ms ease-out 450ms both;
 }
 
 .social-links__heading {
@@ -268,8 +268,9 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin: 0 0 10px;
+  margin: 0 0 6px;
   opacity: 0.85;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
 }
 
 .social-links__icons {
@@ -280,6 +281,7 @@
 .social-links__link {
   color: #ffffff;
   opacity: 0.8;
+  filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.5));
   transition: opacity 150ms ease-out, transform 150ms ease-out;
 }
 

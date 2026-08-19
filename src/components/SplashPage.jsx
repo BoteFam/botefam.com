@@ -44,9 +44,9 @@ function CupCut() {
     <img
       className="cup-cut"
       src={cupCutImg}
-      alt="A coffee cup with the Denver skyline — Ace Eat·Serve, July 18 2026"
-      width="696"
-      height="522"
+      alt="A coffee cup with the Denver skyline — Ace Eat·Serve, September 12 2026"
+      width="821"
+      height="462"
       loading="eager"
     />
   );
@@ -83,7 +83,7 @@ function HeroWordmark() {
     <img
       className="hero-wordmark"
       src={wordmarkImg}
-      alt="Beats &amp; Blends — Denver"
+      alt="Beats & Blends — Denver"
       width="580"
       height="160"
       loading="eager"
@@ -98,7 +98,7 @@ function CTAButton({ onClick }) {
       className="cta-button"
       onClick={onClick}
       type="button"
-      aria-label="Buy tickets for Beats &amp; Blends"
+      aria-label="Buy tickets for Beats & Blends"
     >
       BUY TICKETS
     </button>
@@ -158,9 +158,10 @@ function SocialLinks() {
 }
 
 const SET_TIMES = [
-  { time: '10:00 – 11:00 AM', artist: 'RANMA' },
-  { time: '11:00 AM – 12:30 PM', artist: 'PLURTHLINGS' },
-  { time: '12:30 – 2:00 PM', artist: 'NOA SAITOSHII' },
+  { time: '9:00 – 10:00 AM', artist: 'Yoga With\nGina Turner' },
+  { time: '10:00 – 11:30 AM', artist: 'TBA' },
+  { time: '11:30 AM – 1:00 PM', artist: 'TBA' },
+  { time: '1:00 – 3:00 PM', artist: 'GINA TURNER' },
 ];
 
 function Lineup() {
@@ -169,9 +170,16 @@ function Lineup() {
       <h2 className="lineup__heading">Set Times</h2>
       <ul className="lineup__list">
         {SET_TIMES.map(({ time, artist }) => (
-          <li className="lineup__row" key={artist}>
+          <li className="lineup__row" key={time}>
             <span className="lineup__time">{time}</span>
-            <span className="lineup__artist">{artist}</span>
+            <span className="lineup__artist">
+              {artist.split('\n').map((line, i, lines) => (
+                <span key={line}>
+                  {line}
+                  {i < lines.length - 1 && <br />}
+                </span>
+              ))}
+            </span>
           </li>
         ))}
       </ul>
@@ -205,8 +213,8 @@ export default function SplashPage() {
         <BotefamPresents />
         <HeroWordmark />
         <CTAButton onClick={openModal} />
-        <Lineup />
         <SocialLinks />
+        <Lineup />
       </div>
 
       {/* Ticket modal — rendered only when open */}

@@ -8,6 +8,7 @@ import mountainLeftImg from '../assets/mountain_left.png';
 import mountainRightImg from '../assets/mountain_right.png';
 import cupCutImg from '../assets/cup_cut.png';
 import bgImg from '../assets/BG.png';
+import ginaTurnerBadgeImg from '../assets/gina_turner_badge.png';
 
 /* =========================================================
    Sub-components
@@ -46,7 +47,7 @@ function CupCut() {
       src={cupCutImg}
       alt="A coffee cup with the Denver skyline — Ace Eat·Serve, September 12 2026"
       width="821"
-      height="462"
+      height="1054"
       loading="eager"
     />
   );
@@ -157,33 +158,19 @@ function SocialLinks() {
   );
 }
 
-const SET_TIMES = [
-  { time: '9:00 – 10:00 AM', artist: 'Yoga With\nGina Turner' },
-  { time: '10:00 – 11:30 AM', artist: 'TBA' },
-  { time: '11:30 AM – 1:00 PM', artist: 'TBA' },
-  { time: '1:00 – 3:00 PM', artist: 'GINA TURNER' },
-];
-
-function Lineup() {
+function Featuring() {
   return (
-    <section className="lineup" aria-label="Set times">
-      <h2 className="lineup__heading">Set Times</h2>
-      <ul className="lineup__list">
-        {SET_TIMES.map(({ time, artist }) => (
-          <li className="lineup__row" key={time}>
-            <span className="lineup__time">{time}</span>
-            <span className="lineup__artist">
-              {artist.split('\n').map((line, i, lines) => (
-                <span key={line}>
-                  {line}
-                  {i < lines.length - 1 && <br />}
-                </span>
-              ))}
-            </span>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <div className="featuring">
+      <p className="featuring__label">Featuring</p>
+      <img
+        className="featuring__badge"
+        src={ginaTurnerBadgeImg}
+        alt="Gina Turner"
+        width="230"
+        height="264"
+      />
+      <p className="featuring__caption">9AM Yoga + Support</p>
+    </div>
   );
 }
 
@@ -214,7 +201,7 @@ export default function SplashPage() {
         <HeroWordmark />
         <CTAButton onClick={openModal} />
         <SocialLinks />
-        <Lineup />
+        <Featuring />
       </div>
 
       {/* Ticket modal — rendered only when open */}

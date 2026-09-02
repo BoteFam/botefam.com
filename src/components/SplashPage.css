@@ -181,58 +181,72 @@
   filter: brightness(0.96);
 }
 
-/* ---------- Featuring badge ---------- */
-.featuring {
+/* ---------- Lineup / set times ---------- */
+.lineup {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 28px;
+  width: 100%;
 
-  animation: fadeSlideIn 600ms ease-out 550ms both;
+  animation: fadeSlideIn 600ms ease-out 450ms both;
 }
 
-.featuring__label {
-  color: #ffffff;
-  font-family: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  margin: 0 0 8px;
-  opacity: 0.9;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+.lineup__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }
 
-.featuring__badge {
-  display: block;
-  width: 180px;
-  height: auto;
-  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.45));
-}
-
-.featuring__caption {
-  color: #ffffff;
-  font-family: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin: 8px 0 0;
-  opacity: 0.9;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+.lineup__row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-align: center;
 }
 
 @media (min-width: 1024px) {
-  .featuring__label {
-    font-size: 15px;
+  .lineup__list {
+    gap: 10px;
   }
 
-  .featuring__badge {
-    width: 220px;
+  .lineup__row {
+    flex-direction: row;
+    gap: 0.35em;
+    white-space: nowrap;
   }
+}
 
-  .featuring__caption {
-    font-size: 15px;
+.lineup__time {
+  color: #ffffff;
+  font-family: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  font-variant-caps: all-small-caps;
+  opacity: 0.85;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+.lineup__artist {
+  color: #ffffff;
+  font-family: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
+}
+
+@media (min-width: 1024px) {
+  .lineup__time,
+  .lineup__artist {
+    font-size: 26px;
   }
 }
 

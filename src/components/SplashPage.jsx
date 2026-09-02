@@ -8,7 +8,6 @@ import mountainLeftImg from '../assets/mountain_left.png';
 import mountainRightImg from '../assets/mountain_right.png';
 import cupCutImg from '../assets/cup_cut.png';
 import bgImg from '../assets/BG.png';
-import ginaTurnerBadgeImg from '../assets/gina_turner_badge.png';
 
 /* =========================================================
    Sub-components
@@ -158,19 +157,25 @@ function SocialLinks() {
   );
 }
 
-function Featuring() {
+const SET_TIMES = [
+  { time: '9am–10am', artist: 'Yoga' },
+  { time: '10am–1130am', artist: 'Troll' },
+  { time: '1130am–1pm', artist: 'Mums' },
+  { time: '1pm–3pm', artist: 'Gina Turner' },
+];
+
+function Lineup() {
   return (
-    <div className="featuring">
-      <p className="featuring__label">Featuring</p>
-      <img
-        className="featuring__badge"
-        src={ginaTurnerBadgeImg}
-        alt="Gina Turner"
-        width="230"
-        height="264"
-      />
-      <p className="featuring__caption">9AM Yoga + Support</p>
-    </div>
+    <section className="lineup" aria-label="Set times">
+      <ul className="lineup__list">
+        {SET_TIMES.map(({ time, artist }) => (
+          <li className="lineup__row" key={time}>
+            <span className="lineup__time">{time}:</span>
+            <span className="lineup__artist">{artist}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
 
@@ -201,7 +206,7 @@ export default function SplashPage() {
         <HeroWordmark />
         <CTAButton onClick={openModal} />
         <SocialLinks />
-        <Featuring />
+        <Lineup />
       </div>
 
       {/* Ticket modal — rendered only when open */}

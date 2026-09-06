@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import './SplashPage.css';
 import TicketModal from './TicketModal';
+import { track } from '../lib/analytics';
 
 import botefamPresentsImg from '../assets/botefam_presents.png';
 import wordmarkImg from '../assets/beats_and_blends_word_logo.png';
@@ -148,6 +149,7 @@ function SocialLinks() {
             rel="noopener noreferrer"
             className="social-links__link"
             aria-label={`BOTEFAM on ${name}`}
+            onClick={() => track('social_click', { network: name.toLowerCase() })}
           >
             {icon}
           </a>
@@ -185,7 +187,12 @@ function Lineup() {
 
 export default function SplashPage() {
   const [modalOpen, setModalOpen] = useState(false);
-  const openModal = useCallback(() => setModalOpen(true), []);
+  const openModal = useCallback(() => {
+    /* Deepest intent signal observable on this domain — checkout itself
+       happens in a cross-origin iframe we cannot instrument. */
+    track('ticket_modal_open', { cta_location: 'hero' });
+    setModalOpen(true);
+  }, []);
   const closeModal = useCallback(() => setModalOpen(false), []);
 
   return (

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
+import { track } from '../lib/analytics';
 
 /**
  * TicketModal
@@ -15,9 +16,11 @@ const CLOSE_ANIMATION_MS = 150;
 export default function TicketModal({ onClose }) {
   const [isClosing, setIsClosing] = useState(false);
   const backdropRef = useRef(null);
+  const openedAtRef = useRef(0);
 
   /* Lock body scroll on mount, restore on unmount */
   useEffect(() => {
+    openedAtRef.current = Date.now();
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     return () => {
@@ -28,6 +31,11 @@ export default function TicketModal({ onClose }) {
   /* Trigger close animation, then call parent onClose */
   const handleClose = useCallback(() => {
     if (isClosing) return;
+    /* Dwell time is the only purchase proxy available: the checkout runs in a
+       cross-origin iframe, so a completed order is invisible to this page. */
+    track('ticket_modal_close', {
+      seconds_open: Math.round((Date.now() - openedAtRef.current) / 1000),
+    });
     setIsClosing(true);
     setTimeout(() => {
       onClose();
@@ -76,6 +84,7 @@ export default function TicketModal({ onClose }) {
           src={TICKET_URL}
           title="Beats & Blends ticket purchase"
           allow="payment"
+          onLoad={() => track('ticket_iframe_loaded')}
         />
       </div>
     </div>
